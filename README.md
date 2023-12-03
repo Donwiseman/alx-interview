@@ -1,2 +1,2 @@
-# Pascal Triangle
-Writes a function that returns n row of a pascal triangle as a list.
+# ALX INTERVIEW QUESTIONS
+Contains very short interbiw like questions as practice.
