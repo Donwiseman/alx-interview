@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Has two function, A factorial function and a pascal triangle function."""
 
 
