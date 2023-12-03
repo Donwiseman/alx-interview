@@ -20,8 +20,8 @@ def pascal_triangle(n):
             continue
         row_list = []
         for column in range(row + 1):
-            element = factorial(row)//(factorial(column) *
-                                      factorial(row - column))
+            element = factorial(row) // (factorial(column) *
+                                         factorial(row - column))
             row_list.append(element)
         pascal_list.append(row_list)
     return pascal_list
