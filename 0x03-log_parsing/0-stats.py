@@ -7,12 +7,15 @@ from datetime import datetime
 
 def validate_line(line):
     """Validates the give string adheres toprovided parsing format."""
-    ip_addr, remainder = line.split(' ', 1)
-    excess, remainder = remainder.split('[', 1)
-    date_str, remainder = remainder.split(']', 1)
-    excess, remainder = remainder.split('"', 1)
-    url_given, remainder = remainder.split('"', 1)
-    status, file_size = remainder.strip().split(' ')
+    try:
+        ip_addr, remainder = line.split(' ', 1)
+        xcess, remainder = remainder.split('[', 1)
+        ate_str, remainder = remainder.split(']', 1)
+        xcess, remainder = remainder.split('"', 1)
+        rl_given, remainder = remainder.split('"', 1)
+        tatus, file_size = remainder.strip().split(' ')
+    except Exception:
+        return False
 
     for num in ip_addr.split('.'):
         try:
