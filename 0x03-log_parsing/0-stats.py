@@ -70,5 +70,6 @@ try:
                 break
         if read_lines % 10 == 0:
             print_stat(total_file_size, my_status)
+    print_stat(total_file_size, my_status)
 except KeyboardInterrupt:
     print_stat(total_file_size, my_status)
