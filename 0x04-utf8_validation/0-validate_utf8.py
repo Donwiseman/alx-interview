@@ -28,4 +28,6 @@ def validUTF8(data):
             cont_byte -= 1
             continue
         return False
+    if cont_byte != 0:
+        return False
     return True
