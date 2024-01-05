@@ -5,7 +5,7 @@
 def validUTF8(data):
     """Validates a integer array representing a single byte to be either
        a valid or invalid utf-8 encoding."""
-    
+
     cont_byte = 0
 
     for byte_data in data:
