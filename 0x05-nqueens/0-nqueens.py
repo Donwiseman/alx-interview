@@ -36,7 +36,7 @@ def check_diag_attck(index_pos, other_queen, row_incr, col_incr, N):
         for queen in other_queen:
             if diagonal_pos[0] == queen[0] and diagonal_pos[1] == queen[1]:
                 return True
-        
+
 
 def check_rejection(root, N):
     """Check if the position of the queens are attacking"""
