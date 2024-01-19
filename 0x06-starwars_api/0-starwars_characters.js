@@ -8,10 +8,6 @@ function getData (url) {
     .then(body => {
       return JSON.parse(body);
     })
-    .catch(error => {
-      console.error('Error:', error);
-      throw error;
-    });
 }
 
 const url = 'https://swapi-api.alx-tools.com/api/films/' + part + '/';
@@ -23,9 +19,6 @@ getData(url)
         .then(charData => {
           return charData.name;
         })
-        .catch(charError => {
-          console.error('Error getting character data:', charError);
-        })
     );
     return Promise.all(charPromises);
   })
@@ -34,6 +27,3 @@ getData(url)
       console.log(name);
     }
   })
-  .catch(error => {
-    console.error('Error getting data:', error);
-  });
