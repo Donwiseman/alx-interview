@@ -30,8 +30,8 @@ getData(url)
     return Promise.all(charPromises);
   })
   .then(result => {
-    for (const name of result) {
-      console.log(name);
+    for (let i = 0; i < result.length; i++) {
+      console.log(result[i]);
     }
   })
   .catch(error => {
