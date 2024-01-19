@@ -1,39 +1,20 @@
 #!/usr/bin/node
-const args = process.argv.slice(2);
-const part = args[0];
-const request = require('request-promise-native');
+const util = require('util');
+const request = util.promisify(require('request'));
+const part = process.argv[2];
 
-function getData (url) {
-  return request(url)
-    .then(body => {
-      return JSON.parse(body);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      throw error;
-    });
+async function getChar (part) {
+  const url = 'https://swapi-api.hbtn.io/api/films/' + part + '/';
+  let response = await (await request(url)).body;
+  response = JSON.parse(response);
+  const chars = response.characters;
+
+  for (let i = 0; i < chars.length; i++) {
+    const charUrl = chars[i];
+    const charResp = await (await request(charUrl)).body;
+    const character = JSON.parse(charResp);
+    console.log(character.name);
+  }
 }
 
-const url = 'https://swapi-api.alx-tools.com/api/films/' + part + '/';
-getData(url)
-  .then(data => {
-    const charList = data.characters;
-    const charPromises = charList.map(charUrl =>
-      getData(charUrl)
-        .then(charData => {
-          return charData.name;
-        })
-        .catch(charError => {
-          console.error('Error getting character data:', charError);
-        })
-    );
-    return Promise.all(charPromises);
-  })
-  .then(result => {
-    for (let i = 0; i < result.length; i++) {
-      console.log(result[i]);
-    }
-  })
-  .catch(error => {
-    console.error('Error getting data:', error);
-  });
+getChar(part);
