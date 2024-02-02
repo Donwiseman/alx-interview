@@ -9,7 +9,7 @@ def makeChange(coins: list, total):
     coins_number = 0
     final_coins_number = 0
     if total <= 0:
-        return -1
+        return 0
     coins.sort(reverse=True)
     for index, value in enumerate(coins):
         if value > total:
