@@ -36,12 +36,12 @@ def survey_cell(grid, row, column, direction_from):
             surrounding_sea += 1
     # check up
     if (row - 1) >= 0:
-        if grid[row -1][column] == 1:
+        if grid[row - 1][column] == 1:
             if direction_from != "up":
                 surrounding_land.append(((row - 1, column), "up"))
         else:
             surrounding_sea += 1
-    #check down
+    # check down
     if (row + 1) < len(grid):
         if grid[row + 1][column] == 1:
             if direction_from != "down":
@@ -146,7 +146,7 @@ def island_perimeter(grid):
             if col_index == 0:
                 continue
             if column == 1:
-                surrounding_sea, surrounding_land = survey_cell(grid, 
+                surrounding_sea, surrounding_land = survey_cell(grid,
                                                                 row_index,
                                                                 col_index,
                                                                 "sea")
@@ -157,7 +157,8 @@ def island_perimeter(grid):
                     next_pos, dir = surrounding_land[0]
                     dir_from = get_direction_from(dir)
                     perimeter += count_in_one_direction(grid, (next_pos,
-                                                           (dir, dir_from)))
+                                                               (dir,
+                                                                dir_from)))
                     return perimeter
                 elif len(surrounding_land) == 2:
                     land1, land2 = surrounding_land
