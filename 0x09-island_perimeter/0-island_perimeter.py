@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Finds the perimeter of the island in a given grid"""
 
+surveyed_land = set()
 
 def get_direction_from(direction_to):
     """Returns the direction current cell would be from
@@ -27,6 +28,8 @@ def survey_cell(grid, row, column, direction_from):
                 surrounding_land.append(((row, column - 1), "left"))
         else:
             surrounding_sea += 1
+    else:
+        surrounding_sea += 1
     # check right
     if (column + 1) < len(grid[0]):
         if grid[row][column + 1] == 1:
@@ -34,6 +37,8 @@ def survey_cell(grid, row, column, direction_from):
                 surrounding_land.append(((row, column + 1), "right"))
         else:
             surrounding_sea += 1
+    else:
+        surrounding_sea += 1
     # check up
     if (row - 1) >= 0:
         if grid[row - 1][column] == 1:
@@ -41,6 +46,8 @@ def survey_cell(grid, row, column, direction_from):
                 surrounding_land.append(((row - 1, column), "up"))
         else:
             surrounding_sea += 1
+    else:
+        surrounding_sea += 1
     # check down
     if (row + 1) < len(grid):
         if grid[row + 1][column] == 1:
@@ -48,6 +55,9 @@ def survey_cell(grid, row, column, direction_from):
                 surrounding_land.append(((row + 1, column), "down"))
         else:
             surrounding_sea += 1
+    else:
+        surrounding_sea += 1
+    surveyed_land.add((row, column))
     return (surrounding_sea, surrounding_land)
 
 
@@ -58,6 +68,8 @@ def count_in_one_direction(grid, pos_dir):
     direction_to, direction_from = direction
     row, column = start_pos
     while grid[row][column] == 1:
+        if (row, column) in surveyed_land:
+            return perimeter
         surrounding_sea, surrounding_land = survey_cell(grid, row,
                                                         column, direction_from)
         perimeter += surrounding_sea
@@ -140,11 +152,7 @@ def island_perimeter(grid):
     """Returns the perimeter of a given island in the grid"""
     perimeter = 0
     for row_index, row in enumerate(grid):
-        if row_index == 0:
-            continue
         for col_index, column in enumerate(row):
-            if col_index == 0:
-                continue
             if column == 1:
                 surrounding_sea, surrounding_land = survey_cell(grid,
                                                                 row_index,
