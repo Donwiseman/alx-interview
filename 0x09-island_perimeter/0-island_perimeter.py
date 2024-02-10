@@ -3,6 +3,7 @@
 
 surveyed_land = set()
 
+
 def get_direction_from(direction_to):
     """Returns the direction current cell would be from
         in next cell position. """
