@@ -62,12 +62,12 @@ def isWinner(x, nums):
     """
     maria = 0
     ben = 0
-    if x != len(nums):
+    if x > len(nums):
         return None
-    for n in nums:
-        if n <= 0:
+    for round in range(x):
+        if nums[round] <= 0:
             return None
-        winner = play_round(n)
+        winner = play_round(nums[round])
         if winner == "Maria":
             maria += 1
         elif winner == "Ben":
