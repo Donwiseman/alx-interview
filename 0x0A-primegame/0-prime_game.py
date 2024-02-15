@@ -64,6 +64,8 @@ def isWinner(x, nums):
     ben = 0
     if x > len(nums):
         return None
+    if x > 10000 or len(nums) > 10000:
+        return None
     for round in range(x):
         if nums[round] <= 0:
             return None
