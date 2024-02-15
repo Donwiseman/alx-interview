@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Module that conatins a function that carries out the prime game
-   between Maria and Ben to find the winner. 
+   between Maria and Ben to find the winner.
 """
 
 
@@ -16,7 +16,7 @@ def is_prime(n: int) -> bool:
     return True
 
 
-def pick_num(game_num: list, n : int) -> list:
+def pick_num(game_num: list, n: int) -> list:
     """Picks a prime number and it's multiples"""
     picked_nums = []
     for num in game_num:
@@ -31,7 +31,7 @@ def pick_num(game_num: list, n : int) -> list:
     return picked_nums
 
 
-def play_round(n : int) -> str:
+def play_round(n: int) -> str:
     """returns the winner after a single round"""
     game_nums = list(range(1, n + 1))
     turn = 1
