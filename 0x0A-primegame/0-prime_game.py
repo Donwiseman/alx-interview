@@ -67,8 +67,10 @@ def isWinner(x, nums):
     if x > 10000 or len(nums) > 10000:
         return None
     for round in range(x):
-        if nums[round] <= 0:
+        if nums[round] < 0:
             return None
+        if nums[round] == 0:
+            continue
         winner = play_round(nums[round])
         if winner == "Maria":
             maria += 1
